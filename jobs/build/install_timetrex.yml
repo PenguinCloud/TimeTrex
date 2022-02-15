@@ -1,0 +1,16 @@
+- name: Download and extract Time Trex
+  ansible.builtin.unarchive:
+    src: https://www.timetrex.com/direct_download/TimeTrex_Community_Edition-manual-installer.zip
+    dest: /opt/
+    remote_src: yes
+
+
+
+
+
+
+
+
+
+
+

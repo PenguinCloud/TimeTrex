@@ -1,0 +1,10 @@
+---
+- name: Check database connectivity
+  postgresql_ping:
+    db: "{{ database.name }}"
+    login_host: "{{ database.host }}"
+    login_user: "{{ database.user }}"
+    login_password: "{{ database.password }}"
+    port: "{{ database.port }}"
+  register: ping_database
+  failed_when: ping_database.warnings is defined

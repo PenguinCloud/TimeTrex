@@ -1,0 +1,28 @@
+---
+database:
+  name: "{{ lookup('env', 'DATABASE_NAME') }}"
+  user: "{{ lookup('env', 'DATABASE_USER') }}"
+  password: "{{ lookup('env', 'DATABASE_PASSWORD') }}"
+  host: "{{ lookup('env', 'DATABASE_HOST') }}"
+  port: "{{ lookup('env', 'DATABASE_PORT') }}"
+
+organization:
+  name: "{{ lookup('env', 'ORGANIZATION_NAME') }}"
+  country: "{{ lookup('env', 'ORGANIZATION_COUNTRY') }}"
+  email: "{{ lookup('env', 'ORGANIZATION_EMAIL') }}"
+  hostname: "{{ lookup('env', 'ORGANISATION_HOSTNAME') }}"
+
+admin:
+  logging: "{{ lookup('env', 'ADMIN_LOGGING') }}"
+  password: "{{ lookup('env', 'ADMIN_PASS') }}"
+
+ssl_key: "{{ lookup('env', 'SSL_KEY') }}"
+ssl_cert: "{{ lookup('env', 'SSL_CERTIFICATE') }}"
+
+url: "{{ lookup('env', 'URL') }}"
+
+trusted_domain:  "{{ lookup('env', 'TRUSTED_DOMAIN') }}"
+
+cpu_count: "{{ lookup('env', 'CPU_COUNT') }}"
+
+file_limit: "{{ lookup('env', 'FILE_LIMIT') }}"
