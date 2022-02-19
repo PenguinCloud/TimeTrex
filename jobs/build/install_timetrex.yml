@@ -4,7 +4,8 @@
     dest: /opt/
     remote_src: yes
 
-
+- name: Rename Time Trex directory
+  shell: "mv /opt/{{ timetrex_ver }}/ /opt/timetrex/"
 
 
 

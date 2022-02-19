@@ -12,17 +12,13 @@ organization:
   email: "{{ lookup('env', 'ORGANIZATION_EMAIL') }}"
   hostname: "{{ lookup('env', 'ORGANISATION_HOSTNAME') }}"
 
-admin:
-  logging: "{{ lookup('env', 'ADMIN_LOGGING') }}"
-  password: "{{ lookup('env', 'ADMIN_PASS') }}"
-
 ssl_key: "{{ lookup('env', 'SSL_KEY') }}"
 ssl_cert: "{{ lookup('env', 'SSL_CERTIFICATE') }}"
 
 url: "{{ lookup('env', 'URL') }}"
 
-trusted_domain:  "{{ lookup('env', 'TRUSTED_DOMAIN') }}"
-
 cpu_count: "{{ lookup('env', 'CPU_COUNT') }}"
 
 file_limit: "{{ lookup('env', 'FILE_LIMIT') }}"
+
+timetrex_ver: "{{lookup('env', 'TIMETREX_VER')}}"

@@ -75,16 +75,16 @@
       - test
       - run
 
-#    - name: Configure nextcloud for start up
-#      include_tasks:
-#        file: jobs/run/config_nextcloud.yml
-#        apply:
-#          tags:
-#          - config-nextcloud
-#          - run
-#      tags:
-#      - config_nextcloud
-#      - run
+    - name: Configure nextcloud for start up
+      include_tasks:
+        file: jobs/run/config_timetrex.yml
+        apply:
+          tags:
+          - config-timetrex
+          - run
+      tags:
+      - config_timetrex
+      - run
 
     - name: Test Nginx
       include_tasks:
