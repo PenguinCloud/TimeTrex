@@ -1,5 +1,45 @@
 ---
 version: "2.4"
 services:
-  app:
-    image: penguintech/core-ansible
+
+  postgresql:
+    image: 'bitnami/postgresql:latest'
+    environment:
+      - POSTGRESQL_USERNAME=timetrex
+      - POSTGRESQL_PASSWORD=p@ssword
+      - POSTGRESQL_DATABASE=timetrex
+    ports:
+     - "5432:5432"
+    networks:
+      - timetrex
+
+  php-fpm:
+    image: 'bitnami/php-fpm:latest'
+    ports:
+      - "9000:9000"
+    networks:
+      - timetrex
+
+  timetrex-server:
+    build: .
+    environment:
+      - DATABASE_HOST=postgresql
+      - URL=https://127.0.0.1
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - postgresql
+      - php-fpm
+    networks:
+      - timetrex
+    restart: on-failure # Added this to give maria_db to configure for testing purposes
+    healthcheck:
+      test: ["CMD", "ansible-playbook", "upstart.yml", "--tag", "test"]
+      interval: 5m
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+networks:
+  timetrex:

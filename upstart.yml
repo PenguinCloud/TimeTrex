@@ -1,55 +1,122 @@
 ---
-- hosts: localhost
+- name: Install Time Trex server
+  hosts: localhost
   connection: local
-  vars_file:
-    - vars/base.yml
-   become: yes
-  become_user: root
-  remote_user: root
+  vars_files:
+    - vars/prod.yml
   tasks:
-    - name: Include nodeType variables
-      include_vars:
-        file: "vars/{{ BUILD_ENVIRONMENT }}.yml"
-      tags:
-        - always
-    ignore_errors: yes
-    - name: Include Special Variables
-      include_vars:
-        file: "vars/{{ lookup('env', 'COMPUTE_ENV') | default( 'base', True) }}.yml"
-      ignore_errors: yes
-    - name: Build And Install
+    - name: Install Time Trex Dependencies
       include_tasks:
-        file: jobs/build/build.yml
+        file: jobs/build/install_dependencies.yml
         apply:
           tags:
-            - build
+          - nginx
+          - php
+          - build
       tags:
+      - nginx
+      - php
+      - build
+
+    - name: Install Time Trex
+      include_tasks:
+        file: jobs/build/install_timetrex.yml
+        apply:
+          tags:
+          - restyacore
+          - build
+      tags:
+        - restyacore
         - build
-    - name: Run Configuration and Live
+
+    - name: Generate SSL certificate
       include_tasks:
-        file: jobs/run/run.yml
+        file: jobs/run/ssl_generate.yml
         apply:
           tags:
+          - sslcertificate
+          - run
+      tags:
+      - sslcertificate
+      - run
+
+    - name: Configure NGINX
+      include_tasks:
+        file: jobs/run/config_nginx.yml
+        apply:
+          tags:
+          - nginx
+          - run
+      tags:
+      - nginx
+      - run
+
+    - name: Run nginx
+      include_tasks:
+        file: jobs/run/nginx.yml
+        apply:
+          tags:
+            - nginx
             - run
       tags:
+        - nginx
         - run
-    - name: Run tests to make sure build and run applied application correctly
+
+    - name: Test database connectivity
       include_tasks:
-        file: jobs/run/tests.yml
-      tags:
-        - run
-        - test
-    - name: Execute application
-      include_tasks:
-        file: jobs/run/exec.yml
+        file: jobs/tests/database_test.yml
         apply:
           tags:
-            - exec
+          - database
+          - test
+          - run
       tags:
-        - exec
-    - name: Run tests to make sure app is running as expected
+      - database
+      - test
+      - run
+
+    - name: Configure Time Trex
       include_tasks:
-        file: jobs/run/tests.yml
+        file: jobs/run/config_timetrex.yml
+        apply:
+          tags:
+          - config-timetrex
+          - run
       tags:
-        - exec
+      - config_timetrex
+      - run
+
+    - name: Test Nginx
+      include_tasks:
+        file: jobs/tests/nginx_test.yml
+        apply:
+          tags:
+          - nginx
+          - test
+          - run
+      tags:
+      - nginx
+      - test
+      - run
+
+    - name: Test URL
+      include_tasks:
+        file: jobs/tests/url_test.yml
+        apply:
+          tags:
+            - url
+            - test
+            - run
+      tags:
+        - url
         - test
+        - run
+
+    - name: Execute NGINX
+      include_tasks:
+        file: jobs/exec/nginx.yml
+        apply:
+          tags:
+          - exec
+      tags:
+      - exec
