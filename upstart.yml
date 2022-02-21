@@ -40,16 +40,16 @@
       - sslcertificate
       - run
 
-#    - name: Configure NGINX
-#      include_tasks:
-#        file: jobs/run/config_nginx.yml
-#        apply:
-#          tags:
-#          - nginx
-#          - run
-#      tags:
-#      - nginx
-#      - run
+    - name: Configure NGINX
+      include_tasks:
+        file: jobs/run/config_nginx.yml
+        apply:
+          tags:
+          - nginx
+          - run
+      tags:
+      - nginx
+      - run
 
     - name: Run nginx
       include_tasks:
@@ -75,7 +75,7 @@
       - test
       - run
 
-    - name: Configure nextcloud for start up
+    - name: Configure Time Trex
       include_tasks:
         file: jobs/run/config_timetrex.yml
         apply:
@@ -99,18 +99,18 @@
       - test
       - run
 
-#    - name: Test URL
-#      include_tasks:
-#        file: jobs/tests/nextcloud_test.yml
-#        apply:
-#          tags:
-#            - url
-#            - test
-#            - run
-#      tags:
-#        - url
-#        - test
-#        - run
+    - name: Test URL
+      include_tasks:
+        file: jobs/tests/url_test.yml
+        apply:
+          tags:
+            - url
+            - test
+            - run
+      tags:
+        - url
+        - test
+        - run
 
     - name: Execute NGINX
       include_tasks:

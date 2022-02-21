@@ -1,5 +1,5 @@
 ---
-- name: Check that Nextcloud runs
+- name: Check that Time Trex runs
   uri:
     url: "{{ url }}"
     status_code: [200, 202]
