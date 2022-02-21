@@ -1,0 +1,25 @@
+---
+- name: Check database connectivity
+  postgresql_ping:
+    db: "{{ database.name }}"
+    login_host: "{{ database.host }}"
+    login_user: "{{ database.user }}"
+    login_password: "{{ database.password }}"
+    port: "{{ database.port }}"
+  register: ping_database
+  failed_when: ping_database.warnings is defined
+
+- name: Test for running nginx
+  shell: ps axuf|grep 'nginx'|grep -v "grep" | tr -d "\n" | cat
+
+- name: Test service on port 80
+  shell: netstat -tunlp | grep ":80 " | sed -e 's/.*\///'
+
+- name: Test service on port 443
+  shell: netstat -tunlp | grep ":443 " | sed -e 's/.*\///'
+
+- name: Check that Time Trex runs
+  uri:
+    url: "{{ url }}"
+    status_code: [200, 202]
+    validate_certs: no
