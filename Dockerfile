@@ -15,8 +15,8 @@ ENV CPU_COUNT="2"
 ENV FILE_LIMIT="1042"
 ENV SSL_KEY="nokey"
 ENV SSL_CERTIFICATE="nocert"
-ENV APP_LINK="https://www.timetrex.com/direct_download/TimeTrex_Community_Edition-manual-installer.zip"
-ENV TIMETREX_VER="TimeTrex_Community_Edition_v15.2.0"
+ARG APP_LINK="https://www.timetrex.com/direct_download/TimeTrex_Community_Edition-manual-installer.zip"
+ARG TIMETREX_VER="TimeTrex_Community_Edition_v15.2.0"
 RUN ansible-playbook /opt/manager/upstart.yml -c local --tags build
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
