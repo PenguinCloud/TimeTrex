@@ -1,0 +1,34 @@
+---
+- name: Make sure universe repository is enabled
+  apt_repository:
+    repo: deb http://archive.ubuntu.com/ubuntu focal universe
+    state: present
+    update_cache: yes
+
+- name: Install Dependencies
+  apt:
+    pkg:
+    - nginx-core
+    - php
+    - php-cgi
+    - php-cli
+    - php-pgsql
+    - php-pspell
+    - php-gd
+    - php7.4-gettext
+    - php-imap
+    - php-intl
+    - php-json
+    - php-soap
+    - php-zip
+    - php-curl
+    - php-curl
+    - php-ldap
+    - php-xml
+    - php-xsl
+    - php-mbstring
+    - php-bcmath
+    - python-openssl
+    - python3-psycopg2
+    state: latest
+    update_cache: yes

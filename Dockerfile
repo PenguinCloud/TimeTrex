@@ -1,5 +1,5 @@
 FROM penguintech/core-ansible
-LABEL maintainer="Penguinz Tech Group LLC"
+LABEL maintainer="Penguin Tech Group LLC"
 COPY . /opt/manager/
 ENV DATABASE_NAME="timetrex"
 ENV DATABASE_USER="timetrex"
