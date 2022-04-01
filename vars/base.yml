@@ -23,3 +23,7 @@ file_limit: "{{ lookup('env', 'FILE_LIMIT') }}"
 
 timetrex_ver: "{{lookup('env', 'TIMETREX_VER')}}"
 app_link: "{{lookup('env', 'APP_LINK')}}"
+
+ports:
+  - 80
+  - 443

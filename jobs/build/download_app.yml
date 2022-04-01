@@ -1,0 +1,10 @@
+---
+- name: Download and extract Time Trex
+  ansible.builtin.unarchive:
+    src: "{{ app_link }}"
+    dest: /opt/
+    remote_src: yes
+
+- name: Rename Time Trex directory
+  shell: "mv /opt/{{ timetrex_ver }}/ /opt/timetrex/"
+
