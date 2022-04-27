@@ -10,24 +10,23 @@
     pkg:
     - nginx-core
     - php
+    - php-bcmath
     - php-cgi
     - php-cli
-    - php-pgsql
-    - php-pspell
+    - php-curl
     - php-gd
-    - php7.4-gettext
     - php-imap
     - php-intl
     - php-json
-    - php-soap
-    - php-zip
-    - php-curl
-    - php-curl
     - php-ldap
+    - php-mbstring
+    - php-pgsql
+    - php-pspell
+    - php-soap
     - php-xml
     - php-xsl
-    - php-mbstring
-    - php-bcmath
+    - php-zip
+    - php7.4-gettext
     - python-openssl
     - python3-psycopg2
     state: latest
