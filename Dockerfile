@@ -11,8 +11,9 @@ WORKDIR /opt/manager
 RUN apt update && apt dist-upgrade -y && apt auto-remove -y && apt clean -y
 
 # PUT YER ARGS in here
+ARG APP_TITLE="TimeTrex"
 ARG APP_LINK="https://www.timetrex.com/direct_download/TimeTrex_Community_Edition-manual-installer.zip"
-ARG TIMETREX_VER="TimeTrex_Community_Edition_v15.2.2"
+ARG TIMETREX_VER="TimeTrex_Community_Edition_v16.2.0"
 
 # BUILD IT!
 RUN ansible-playbook build.yml -c local

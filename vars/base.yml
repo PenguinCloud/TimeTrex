@@ -1,4 +1,12 @@
 ---
+run:
+  user: ptg-user
+
+app:
+  title: "{{ lookup('ansible.builtin.env', 'APP_TILE') }}"
+  link: "{{ lookup('env', 'APP_LINK') }}"
+  version: "{{ lookup('env', 'TIMETREX_VER') }}"
+
 database:
   name: "{{ lookup('env', 'DATABASE_NAME') }}"
   user: "{{ lookup('env', 'DATABASE_USER') }}"
@@ -20,9 +28,6 @@ url: "{{ lookup('env', 'URL') }}"
 cpu_count: "{{ lookup('env', 'CPU_COUNT') }}"
 
 file_limit: "{{ lookup('env', 'FILE_LIMIT') }}"
-
-timetrex_ver: "{{lookup('env', 'TIMETREX_VER')}}"
-app_link: "{{lookup('env', 'APP_LINK')}}"
 
 ports:
   - 80

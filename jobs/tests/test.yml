@@ -1,12 +1,12 @@
 ---
-- name: Test Database Cnnectivity
-  include_tasks:
-    file: jobs/tests/database_test.yml
-
-- name: Test Nginx
-  include_tasks:
-    file: jobs/tests/nginx_test.yml
-
-- name: Test URL
-  include_tasks:
-    file: jobs/tests/url_test.yml
+#- name: Test Database Cnnectivity
+#  include_tasks:
+#    file: jobs/tests/database_test.yml
+#
+#- name: Test Nginx
+#  include_tasks:
+#    file: jobs/tests/nginx_test.yml
+#
+#- name: Test URL
+#  include_tasks:
+#    file: jobs/tests/url_test.yml

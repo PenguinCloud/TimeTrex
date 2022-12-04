@@ -20,11 +20,10 @@ services:
       - DATABASE_HOST=postgresql
       - URL=https://127.0.0.1
     ports:
-      - "80:80"
-      - "443:443"
+      - "8080:8080"
+      - "8443:8443"
     depends_on:
       - postgresql
-      - php-fpm
     networks:
       - timetrex
     healthcheck:
