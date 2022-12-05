@@ -27,7 +27,7 @@ services:
     networks:
       - timetrex
     healthcheck:
-      test: ["CMD", "ansible-playbook", "upstart.yml", "--tag", "test"]
+      test: ["CMD", "ansible-playbook", "oldupstart.yml", "--tag", "test"]
       interval: 5m
       timeout: 10s
       retries: 3

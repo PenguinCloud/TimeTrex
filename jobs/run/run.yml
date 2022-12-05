@@ -3,14 +3,15 @@
 #  include_tasks:
 #    file: jobs/run/ssl_generate.yml
 #
-#- name: Configure Nginx
-#  include_tasks:
-#    file: jobs/run/config_nginx.yml
-#
+- name: Configure phpfpm
+  include_tasks:
+    file: phpfpm_config.yml
+
+- name: Configure Nginx
+  include_tasks:
+    file: jobs/run/config_nginx.yml
+
 #- name: Configure Freescout
 #  include_tasks:
 #    file: jobs/run/config_timetrex.yml
 #
-#- name: Run Nginx
-#  include_tasks:
-#    file: jobs/run/nginx.yml

@@ -15,10 +15,10 @@
       include_vars:
         file: "vars/{{ lookup('env', 'COMPUTE_ENV') | default( 'base', True) }}.yml"
       ignore_errors: yes
-# Need to put this in here to start the database before running commands to install databse in app
-    - name: Run tests to make sure app is running as expected
-      include_tasks:
-        file: jobs/tests/tests.yml
+## Need to put this in here to start the database before running commands to install databse in app
+#    - name: Run tests to make sure app is running as expected
+#      include_tasks:
+#        file: jobs/tests/tests.yml
     - name: Run And Configure
       include_tasks:
         file: jobs/run/run.yml
