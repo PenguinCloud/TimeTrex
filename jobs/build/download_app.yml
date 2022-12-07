@@ -17,3 +17,17 @@
 
 - name: Rename Timetrex repo
   shell: "mv /opt/{{ app.version}} /opt/timetrex"
+
+- name: Create storage directory
+  file:
+    path: /var/timetrex/storage
+    state: directory
+    owner: "{{ run.user }}"
+    group: "{{ run.user }}"
+
+- name: Create log directory
+  file:
+    path: /var/log/timetrex
+    state: directory
+    owner: "{{ run.user }}"
+    group: "{{ run.user }}"

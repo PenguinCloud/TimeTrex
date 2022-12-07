@@ -22,3 +22,11 @@
     recurse: yes
     owner: "{{ run.user }}"
     group: "{{ run.user }}"
+
+- name: Recursively change ownership for /run to run the pid file
+  ansible.builtin.file:
+    path: /run
+    state: directory
+    recurse: yes
+    owner: "{{ run.user }}"
+    group: "{{ run.user }}"
