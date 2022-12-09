@@ -1,12 +1,6 @@
 ---
-#- name: Test Database Cnnectivity
-#  include_tasks:
-#    file: jobs/tests/database_test.yml
-#
-#- name: Test Nginx
-#  include_tasks:
-#    file: jobs/tests/nginx_test.yml
-#
-#- name: Test URL
-#  include_tasks:
-#    file: jobs/tests/url_test.yml
+- name: Check that Time Trex runs
+  uri:
+    url: "{{ url }}"
+    status_code: [200, 202]
+    validate_certs: no

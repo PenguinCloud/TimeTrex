@@ -12,7 +12,7 @@
 [path]
 ;URL to TimeTrex web root directory. ie: http://your.domain.com/<*BASE_URL*>
 ;DO NOT INCLUDE http://your.domain.com, just the directory AFTER your domain
-base_url = "timetrex/interface"
+base_url = "interface"
 
 ;
 ;Log directory  -- NOTICE: For security reasons, this should always be outside the web server document root.
@@ -72,7 +72,7 @@ delivery_method = soap
 [cache]
 enable = TRUE
 ;NOTICE: For security reasons, this must be outside the web server document root.
-dir = /tmp/timetrex
+dir = "/tmp/timetrex"
 
 
 
@@ -87,7 +87,6 @@ enable_log = FALSE
 verbosity = 10
 
 
-
 [other]
 ; Force all clients to use SSL.
 force_ssl = FALSE
@@ -96,10 +95,10 @@ primary_company_id = 0
 
 ;Specify the URL hostname to be used to access TimeTrex. The BASE_URL specified above will be appended on to this automatically.
 ; This should be a fully qualified domain name only, do not include http:// or any trailing directories.
-hostname = localhost
+hostname = {{ url }}
 
 ;ONLY when using a fully qualified hostname specified above, enable CSRF validation for increased security.
-;enable_csrf_validation = TRUE
+enable_csrf_validation = {{ csrf }}
 
 ; System Administrators Email address to send critical errors to if necessary. Set to FALSE to disable completely.
 ;system_admin_email = {{ organization.email }}

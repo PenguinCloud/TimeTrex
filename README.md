@@ -1,7 +1,7 @@
-# Akaunting
+# TimeTrex
 
->>Akaunting is a free, open source online accounting software designed for small businesses and freelancers. 
-> It is built with modern technologies such as Laravel, VueJS, Tailwind, RESTful API etc.
+>> About
+TimeTrex Workforce Management is a complete web-based payroll and time management suite which offers employee scheduling, time & attendance (timeclock, timesheet), job costing, human resource management (HRM), invoicing and payroll all in tightly integrated package.
 > 
 # Why this image vs others
 ## Built in self testing and healing

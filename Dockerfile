@@ -21,6 +21,8 @@ RUN ansible-playbook build.yml -c local
 ENV DATABASE_NAME="timetrex"
 ENV DATABASE_USER="timetrex"
 ENV DATABASE_PASSWORD="p@ssword"
+ENV URL="localhost:8080"
+ENV CSRF="FALSE"
 #ENV DATABASE_HOST="localhost"
 #ENV DATABASE_PORT="5432"
 #ENV ORGANIZATION_NAME="name"

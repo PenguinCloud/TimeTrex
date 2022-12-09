@@ -1,11 +1,12 @@
 ---
 - name: Recursively change ownership of timetrex directory
   ansible.builtin.file:
-    path: /opt/timetrex
+    path: /opt/html/timetrex
     state: directory
     recurse: yes
     owner: "{{ run.user }}"
     group: "{{ run.user }}"
+    mode: '775'
 
 - name: Recursively change ownership of /var/lib/nginx
   ansible.builtin.file:

@@ -1,4 +1,12 @@
 ---
+- name: Create empty repo
+  file:
+    path: /opt/html
+    state: directory
+    owner: "{{ run.user }}"
+    group: "{{ run.user }}"
+
+
 - name: Download zip file
   ansible.builtin.get_url:
     url: "{{ app.link}}"
@@ -7,7 +15,7 @@
 - name: Extract Timetrex
   unarchive:
     src: /opt/TimeTrex_Community_Edition-manual-installer.zip
-    dest: /opt
+    dest: /opt/html
     remote_src: yes
 
 - name: Delete Timetrex zip file
@@ -16,7 +24,7 @@
     state: absent
 
 - name: Rename Timetrex repo
-  shell: "mv /opt/{{ app.version}} /opt/timetrex"
+  shell: "mv /opt/html/{{ app.version}} /opt/html/timetrex"
 
 - name: Create storage directory
   file:
@@ -24,6 +32,7 @@
     state: directory
     owner: "{{ run.user }}"
     group: "{{ run.user }}"
+    mode: '775'
 
 - name: Create log directory
   file:
@@ -31,3 +40,4 @@
     state: directory
     owner: "{{ run.user }}"
     group: "{{ run.user }}"
+    mode: '775'

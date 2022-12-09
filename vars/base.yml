@@ -25,6 +25,8 @@ ssl_cert: "{{ lookup('env', 'SSL_CERTIFICATE') }}"
 
 url: "{{ lookup('env', 'URL') }}"
 
+csrf: "{{ lookup('env', 'CSRF') }}"
+
 cpu_count: "{{ lookup('env', 'CPU_COUNT') }}"
 
 file_limit: "{{ lookup('env', 'FILE_LIMIT') }}"

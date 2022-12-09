@@ -2,4 +2,4 @@
 - name: Template config to opt/TimeTrex_Community_Edition_v15.1.5/
   template:
     src: templates/timetrex_config.j2
-    dest: /opt/timetrex/timetrex.ini.php
+    dest: /opt/html/timetrex/timetrex.ini.php
