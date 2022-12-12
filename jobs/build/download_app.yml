@@ -6,7 +6,6 @@
     owner: "{{ run.user }}"
     group: "{{ run.user }}"
 
-
 - name: Download zip file
   ansible.builtin.get_url:
     url: "{{ app.link}}"
