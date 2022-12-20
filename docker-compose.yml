@@ -9,32 +9,22 @@ services:
       - POSTGRESQL_PASSWORD=p@ssword
       - POSTGRESQL_DATABASE=timetrex
     ports:
-     - "5432:5432"
+      - "5432:5432"
     networks:
       - timetrex
 
-  php-fpm:
-    image: 'bitnami/php-fpm:latest'
-    ports:
-      - "9000:9000"
-    networks:
-      - timetrex
-
-  timetrex-server:
+  app:
+    image: penguintech/timetrex
     build: .
-    environment:
-      - DATABASE_HOST=postgresql
-      - URL=https://127.0.0.1
     ports:
-      - "80:80"
-      - "443:443"
+      - "8080:8080"
+      - "8443:8443"
     depends_on:
       - postgresql
-      - php-fpm
     networks:
       - timetrex
     healthcheck:
-      test: ["CMD", "ansible-playbook", "upstart.yml", "--tag", "test"]
+      test: ["CMD", "ansible-playbook", "oldupstart.yml", "--tag", "test"]
       interval: 5m
       timeout: 10s
       retries: 3

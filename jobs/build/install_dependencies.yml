@@ -5,29 +5,37 @@
     state: present
     update_cache: yes
 
+- name: Add php repo
+  apt_repository:
+    repo: ppa:ondrej/php
+    state: present
+
 - name: Install Dependencies
   apt:
     pkg:
-    - nginx-core
+    - unzip
+    - nginx
+    - libapache2-mod-php
     - php
-    - php-cgi
-    - php-cli
-    - php-pgsql
-    - php-pspell
-    - php-gd
-    - php7.4-gettext
-    - php-imap
-    - php-intl
-    - php-json
-    - php-soap
-    - php-zip
-    - php-curl
-    - php-curl
-    - php-ldap
-    - php-xml
-    - php-xsl
-    - php-mbstring
-    - php-bcmath
+    - php8.1-cgi
+    - php8.1-cli
+    - php8.1-pgsql
+    - php8.1-pspell
+    - php8.1-gd
+    - php8.1-gettext
+    - php8.1-imap
+    - php8.1-intl
+    - php8.1-phpdbg
+    - php8.1-soap
+    - php8.1-zip
+    - php8.1-curl
+    - php8.1-ldap
+    - php8.1-xml
+    - php8.1-xsl
+    - php8.1-mbstring
+    - php8.1-bcmath
+    - php8.1-fpm
+    - postgresql-client
     - python-openssl
     - python3-psycopg2
     state: latest

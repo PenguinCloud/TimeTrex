@@ -6,3 +6,11 @@
 - name: Download and extract Time Trex
   include_tasks:
     file: jobs/build/download_app.yml
+
+- name: Set permissions for php-fpm
+  include_tasks:
+    file: permissions_phpfpm.yml
+
+- name: Set permissions
+  include_tasks:
+    file: permissions_nginx.yml
