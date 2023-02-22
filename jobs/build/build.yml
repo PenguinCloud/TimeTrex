@@ -14,3 +14,7 @@
 - name: Set permissions
   include_tasks:
     file: permissions_nginx.yml
+
+- name: Create open ssl cert directories
+  include_tasks:
+    file: create_cert_directories.yml

@@ -15,8 +15,7 @@
     pkg:
     - unzip
     - nginx
-    - libapache2-mod-php
-    - php
+    - php8.1
     - php8.1-cgi
     - php8.1-cli
     - php8.1-pgsql
@@ -35,8 +34,15 @@
     - php8.1-mbstring
     - php8.1-bcmath
     - php8.1-fpm
+    - php8.1-simplexml
     - postgresql-client
     - python-openssl
     - python3-psycopg2
     state: latest
     update_cache: yes
+
+- name: Remove php8.2
+  apt:
+    pkg: php8.2
+    state: absent
+    purge: true

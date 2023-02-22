@@ -8,3 +8,6 @@
     port: "{{ database.port }}"
   register: ping_database
   failed_when: ping_database.warnings is defined
+  until: ping_database is succeeded
+  retries: 10
+  delay: 10

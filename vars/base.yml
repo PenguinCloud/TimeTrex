@@ -18,16 +18,16 @@ organization:
   name: "{{ lookup('env', 'ORGANIZATION_NAME') }}"
   country: "{{ lookup('env', 'ORGANIZATION_COUNTRY') }}"
   email: "{{ lookup('env', 'ORGANIZATION_EMAIL') }}"
-  hostname: "{{ lookup('env', 'ORGANISATION_HOSTNAME') }}"
 
-ssl_key: "{{ lookup('env', 'SSL_KEY') }}"
-ssl_cert: "{{ lookup('env', 'SSL_CERTIFICATE') }}"
+server_address: "{{ lookup('env', 'SERVER_ADDRESS') }}"
+
+ssl_cert: "{{ lookup('env', 'SSL_CERT') }}"
+
+protocol: "{{ lookup('env', 'PROTOCOL') }}"
 
 url: "{{ lookup('env', 'URL') }}"
 
 csrf: "{{ lookup('env', 'CSRF') }}"
-
-cpu_count: "{{ lookup('env', 'CPU_COUNT') }}"
 
 file_limit: "{{ lookup('env', 'FILE_LIMIT') }}"
 
