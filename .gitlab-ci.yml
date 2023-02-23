@@ -186,3 +186,4 @@ runner-postrun:
     - docker image prune -f
     - docker container prune -f
     - rm -rf /tmp/$CI_COMMIT_SHA/reports
+
