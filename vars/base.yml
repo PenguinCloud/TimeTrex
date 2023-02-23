@@ -19,6 +19,10 @@ organization:
   country: "{{ lookup('env', 'ORGANIZATION_COUNTRY') }}"
   email: "{{ lookup('env', 'ORGANIZATION_EMAIL') }}"
 
+ports:
+  http: "{{ lookup('env', 'HTTP_PORT') }}"
+  https: "{{ lookup('env', 'HTTPS_PORT') }}"
+
 server_address: "{{ lookup('env', 'SERVER_ADDRESS') }}"
 
 ssl_cert: "{{ lookup('env', 'SSL_CERT') }}"
@@ -31,6 +35,6 @@ csrf: "{{ lookup('env', 'CSRF') }}"
 
 file_limit: "{{ lookup('env', 'FILE_LIMIT') }}"
 
-ports:
+ports_test:
   - 80
   - 443

@@ -1,8 +1,7 @@
 server {
-    listen 8080;
-    listen [::]:8080;
-
-    server_name localhost;
+    listen {{ ports.http }};
+    listen [::]:{{ ports.http }};
+    server_name {{ server_address }};
 
     root /opt/html/timetrex;
 

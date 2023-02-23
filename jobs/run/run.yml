@@ -1,8 +1,9 @@
 ---
-#- name: Generate open SSl certificate
-#  include_tasks:
-#    file: jobs/run/ssl_generate.yml
-#
+- name: Generate open SSl certificate
+  include_tasks:
+    file: jobs/run/ssl_generate.yml
+  when: ssl_cert == "open"
+
 - name: Run database test
   include_tasks:
     file: jobs/tests/database_test.yml
